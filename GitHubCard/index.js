@@ -28,8 +28,7 @@
 */
 
 // const followersArray = ['lavonmejia', 'marquesj8023', 'juliethrallstewart', 'dustyfingers'];
-const followersArray = ['dustyfingers' , 'lavonmejia'];
-const friendsGits = axios.get(`https://api.github.com/users/${followersArray}`)
+
 
 // , "marquesJ8023"
 
@@ -101,16 +100,48 @@ function createCard(cardObject) {
 return card
 }
 
+
+
+const followersArray = ['lavonmejia','dustyfingers', 'juliethrallstewart', 'DevMountain', 'Google', 'Microsoft', 'Apple', 'bigknell', 'justsml'];
+// const friendsGits = axios.get(`https://api.github.com/users/${followersArray}`)
+// .then(data => {
+//   cards.appendChild(createCard(data))
+// console.log('All is well here')})
+
+// .catch(error => {
+//  cards.appendChild(createCard(data))
+// console.log('No worky', error)});
+
+
 const cards = document.querySelector('.cards');
+
+
+for(let person of followersArray) {
+  let card = axios.get(`https://api.github.com/users/${person}`)
+  .then(data => {
+    cards.appendChild(createCard(data))
+  console.log('All is well here')})
+
+ .catch(error => {
+   cards.appendChild(createCard(data))
+  console.log('No worky', error)});
+}
+
+// followersArray.forEach( person => {
+//   let card = axios.get(`https://api.github.com/users/${person}`)
+//   .then(data => {
+//     cards.appendChild(createCard(data))
+//   console.log('All is well here')})
+  
+//   .catch(error => {
+//    cards.appendChild(createCard(data))
+//   console.log('No worky', error)});
+// })
+
+
+
 // lavon.then(data => {
 //      cards.appendChild(createCard(data))})  
-friendsGits.then(data => {
-        cards.appendChild(createCard(data))
-      console.log('All is well here')});
-
-friendsGits.catch(error => {
-       cards.appendChild(createCard(data))
-      console.log('No worky', error)});
 
 /* List of LS Instructors Github username's: 
   tetondan
